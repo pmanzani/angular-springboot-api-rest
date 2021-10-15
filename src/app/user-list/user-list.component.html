@@ -1,0 +1,33 @@
+<h2>Lista de Usuários</h2>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><mat-checkbox class="example-margin"
+        [checked]="allComplete"
+        (change)="toggleCheckAll($event.checked)"></mat-checkbox></th>
+      <th>Nome Completo</th>
+      <th>Idade</th>
+      <th>Gênero</th>
+      <th>Data de Aniversário</th>
+      <th>E-mail</th>
+      <th>Senha</th>
+      <th><button type="button" class="btn btn-outline-danger">Remover</button></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of users">
+      <td><mat-checkbox class="example-margin" [checked]="user.checked" (change)="updateCheck(user)"></mat-checkbox></td>
+      <td>{{ user.fullname }}</td>
+      <td>{{ user.age }}</td>
+      <td>{{ user.sex }}</td>
+      <td>{{ user.birthday }}</td>
+      <td>{{ user.email }}</td>
+      <td>{{ user.password }}</td>
+      <td>
+        <div class="btn-group" role="group" aria-label="Basic outlined example">
+          <button type="button" class="btn btn-outline-primary">Alterar</button>
+        </div>
+    </td>
+    </tr>
+  </tbody>
+</table>

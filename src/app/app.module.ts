@@ -3,15 +3,21 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { UserListComponent } from './user-list/user-list.component';
+import { UserListComponent } from './pages/private-component/user-list/user-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatCheckboxModule } from '@angular/material/checkbox'
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { LoginPageComponent } from './pages/public-component/login-page/login-page.component';
+import { PrivateComponentComponent } from './pages/private-component/private-component.component';
+import { PublicComponentComponent } from './pages/public-component/public-component.component'
 
 @NgModule({
   declarations: [
     AppComponent,
-    UserListComponent
+    UserListComponent,
+    LoginPageComponent,
+    PrivateComponentComponent,
+    PublicComponentComponent,
   ],
   imports: [
     BrowserModule,

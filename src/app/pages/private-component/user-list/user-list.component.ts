@@ -1,6 +1,7 @@
-import { UserService } from './../user.service';
+import { UserService } from '../../../user.service';
 import { Component, OnInit } from '@angular/core';
-import { User } from '../user';
+import { User } from '../../../user';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-user-list',

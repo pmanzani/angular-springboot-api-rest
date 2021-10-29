@@ -10,6 +10,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { LoginPageComponent } from './pages/public-component/login-page/login-page.component';
 import { PrivateComponentComponent } from './pages/private-component/private-component.component';
 import { PublicComponentComponent } from './pages/public-component/public-component.component'
+import { ToolbarComponent } from './toolbar/toolbar.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { PublicComponentComponent } from './pages/public-component/public-compon
     LoginPageComponent,
     PrivateComponentComponent,
     PublicComponentComponent,
+    ToolbarComponent
   ],
   imports: [
     BrowserModule,

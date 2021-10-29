@@ -9,7 +9,7 @@ const routes: Routes = [
   //{path: '', redirectTo: 'login', pathMatch: 'full'},
   {
     path: '',
-    component: PrivateComponentComponent,
+    component: PublicComponentComponent,
     children: [
       {
         path: 'login',
@@ -25,7 +25,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    component: PublicComponentComponent,
+    component: PrivateComponentComponent,
     children: [
       {
         path: 'users',

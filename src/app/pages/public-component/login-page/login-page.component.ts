@@ -18,7 +18,7 @@ export class LoginPageComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  async onSubmit() {
+  onSubmit() {
     this.submitted = true;
     //this.loaded = false;
     // Para o caso formulario invalido
@@ -27,7 +27,7 @@ export class LoginPageComponent implements OnInit {
     //}
     try {
       //await this.authenticationService.login(this.loginForm.getRawValue());
-      //this.router.navigate(['/home']);
+      this.router.navigate(['/users']);
     } catch (error) {
 
       //this.error = error;

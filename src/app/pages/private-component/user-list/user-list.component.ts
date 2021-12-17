@@ -1,7 +1,6 @@
-import { UserService } from '../../../user.service';
+import {  toastError } from './../../../../_helpers/swal';
+import { UserService } from '../../../../_services/user.service';
 import { Component, OnInit } from '@angular/core';
-import { User } from '../../../user';
-import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-user-list',
@@ -21,13 +20,8 @@ export class UserListComponent implements OnInit {
   }
 
   private async getUsers() {
-    let usersTemp: any[] = [];
-    usersTemp = await this.userService.getUsersList().toPromise();
-
-    usersTemp.forEach(u => {
-      this.users.push({...u, checked: false});
-    });
-
+    this.users = await this.userService.getUsersList();
+    this.users.map(user => ({...user, checked: false}));
   }
 
   toggleCheckAll(checked: boolean) {
@@ -40,4 +34,19 @@ export class UserListComponent implements OnInit {
     this.allComplete = this.users != null && this.users.every(user => user.checked);
   }
 
+  async removeUser() {
+    let users = this.users.filter(user => user.checked);
+    if (users.length == 0) {
+      toastError.fire('Nenhum usuário selecionado');
+    }
+
+    try {
+      await this.userService.removeUser(users);
+    } catch(e) {
+      toastError.fire('Ocorreu um erro!');
+      console.error(e)
+    }
+
+    this.users = this.users.filter(user => !user.checked);
+  }
 }

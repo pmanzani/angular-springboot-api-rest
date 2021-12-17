@@ -11,7 +11,6 @@ import { LoginPageComponent } from './pages/public-component/login-page/login-pa
 import { PrivateComponentComponent } from './pages/private-component/private-component.component';
 import { PublicComponentComponent } from './pages/public-component/public-component.component'
 import { ToolbarComponent } from './toolbar/toolbar.component';
-import { LoaderComponent } from './layouts/loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -20,8 +19,7 @@ import { LoaderComponent } from './layouts/loader/loader.component';
     LoginPageComponent,
     PrivateComponentComponent,
     PublicComponentComponent,
-    ToolbarComponent,
-    LoaderComponent
+    ToolbarComponent
   ],
   imports: [
     BrowserModule,

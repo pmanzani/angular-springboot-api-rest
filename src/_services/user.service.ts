@@ -24,7 +24,14 @@ export class UserService {
   }
 
   removeUser(id: any): Promise<any> {
-    return this.httpClient.delete(this.url + 'delete',id);
+    return this.httpClient.delete(this.url + 'delete', id);
   }
 
+  updateUser(user: Object) {
+    return this.httpClient.post(this.url + 'update', user);
+  }
+
+  insertUser(user: Object) {
+    return this.httpClient.post(this.url + 'insert', user);
+  }
 }

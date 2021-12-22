@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LoginPageComponent } from './login-page/login-page.component';
-import { ToolbarComponent } from 'src/app/toolbar/toolbar.component';
 
 
 @NgModule({
@@ -9,8 +8,7 @@ import { ToolbarComponent } from 'src/app/toolbar/toolbar.component';
     LoginPageComponent
   ],
   imports: [
-    CommonModule,
-    ToolbarComponent
+    CommonModule
   ]
 })
 export class PublicComponentModule { }

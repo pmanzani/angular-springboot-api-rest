@@ -1,4 +1,3 @@
-
 <h2>Lista de Usuários</h2>
 <table class="table table-striped">
   <thead>
@@ -12,7 +11,10 @@
       <th>Data de Aniversário</th>
       <th>E-mail</th>
       <th>Senha</th>
-      <th><button type="button" class="btn btn-outline-danger" (click)="removeUser()">Remover</button></th>
+      <th class="center">
+          <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#modalUser" (click)="newUser()">Adicionar</button>
+          <button type="button" class="btn btn-outline-danger" (click)="removeUser()">Remover</button>
+      </th>
     </tr>
   </thead>
   <tbody>
@@ -21,14 +23,64 @@
       <td>{{ user.fullname }}</td>
       <td>{{ user.age }}</td>
       <td>{{ user.sex }}</td>
-      <td>{{ user.birthday }}</td>
+      <td>{{ user.birthday | date: 'dd/MM/yyyy' }}</td>
       <td>{{ user.email }}</td>
       <td>{{ user.password }}</td>
-      <td>
+      <td class="center" colspan="2">
         <div class="btn-group" role="group" aria-label="Basic outlined example">
-          <button type="button" class="btn btn-outline-primary">Alterar</button>
+          <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#modalUser" (click)="selectUser(user)">Alterar</button>
         </div>
     </td>
     </tr>
   </tbody>
 </table>
+<ngb-pagination [(page)]="pageDetail" [pageSize]="recordPerPageDetail" [collectionSize]="searchDetailResult?.totalDados" [maxSize]="5" [ellipses]="true"
+                    (pageChange)="searchInvoiceDetail(invoiceResume)" class="d-flex justify-content-center"></ngb-pagination>
+
+<!-- Modal -->
+<div class="modal fade" id="modalUser" tabindex="-1" role="dialog" aria-labelledby="modalUser" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalUser">{{ title }}</h5>
+        <button type="button" class="close button_right" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <table class="table" *ngIf="selectedUser">
+          <tbody>
+            <tr>
+              <td>Nome Completo</td>
+              <td><input type="text" value="{{ selectedUser.fullname }}" [(ngModel)]="selectedUser.fullname"></td>
+            </tr>
+            <tr>
+              <td>Idade</td>
+              <td><input type="text" value="{{ selectedUser.age }}" [(ngModel)]="selectedUser.age"></td>
+            </tr>
+            <tr>
+              <td>Gênero</td>
+              <td><input type="text" value="{{ selectedUser.sex }}" [(ngModel)]="selectedUser.sex"></td>
+            </tr>
+            <tr>
+              <td>Data de Aniversário</td>
+              <td><input #pedro type="date" value="{{ selectedUser.birthday }}" [(ngModel)]="selectedUser.birthday"></td>
+            </tr>
+            <tr>
+              <td>E-mail</td>
+              <td><input type="text" value="{{ selectedUser.email }}" [(ngModel)]="selectedUser.email"></td>
+            </tr>
+            <tr>
+              <td>Senha</td>
+              <td><input type="text" value="{{ selectedUser.password }}" [(ngModel)]="selectedUser.password"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+        <button type="submit" class="btn btn-primary" data-dismiss="modal" (click)="saveUser(selectedUser)">Salvar</button>
+      </div>
+    </div>
+  </div>
+</div>

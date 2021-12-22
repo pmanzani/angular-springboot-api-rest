@@ -26,6 +26,6 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
 
-## Userful links
+## Useful links
 
 https://pt.stackoverflow.com/questions/422227/has-been-blocked-by-cors-policy-no-access-control-allow-origin

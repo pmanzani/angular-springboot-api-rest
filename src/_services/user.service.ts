@@ -30,8 +30,4 @@ export class UserService {
   updateUser(user: Object) {
     return this.httpClient.post(this.url + 'update', user);
   }
-
-  insertUser(user: Object) {
-    return this.httpClient.post(this.url + 'insert', user);
-  }
 }

@@ -12,7 +12,7 @@ import { PublicComponentComponent } from './pages/public-component/public-compon
 import { ToolbarComponent } from '../_components/toolbar/toolbar.component';
 import { NgxUiLoaderModule } from 'ngx-ui-loader';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NgbModule, NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -32,8 +32,7 @@ import { NgbModule, NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
     NgxUiLoaderModule,
     FormsModule,
     ReactiveFormsModule,
-    NgbModule,
-    NgbPaginationModule
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

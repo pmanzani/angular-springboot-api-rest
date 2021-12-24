@@ -2,8 +2,6 @@ import {  toastError, toastSuccess } from './../../../../_helpers/swal';
 import { UserService } from '../../../../_services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
-import { FormControl, FormGroup } from '@angular/forms';
-import { pseudoRandomBytes } from 'crypto';
 
 @Component({
   selector: 'app-user-list',
@@ -16,6 +14,7 @@ export class UserListComponent implements OnInit {
   selectedUser: any;
   allComplete: boolean = false;
   title: any;
+  isNewUser: boolean = false;
 
   constructor(private userService: UserService,
     private loader: NgxUiLoaderService) {
@@ -63,6 +62,7 @@ export class UserListComponent implements OnInit {
   }
 
   selectUser(user: any) {
+    this.isNewUser = false;
     this.title = "Alteração";
 
     this.selectedUser = JSON.parse(JSON.stringify(user));
@@ -75,7 +75,7 @@ export class UserListComponent implements OnInit {
     }
   }
 
-  async saveUser(selectedUser: Object) {
+  async saveUser(selectedUser: any) {
     try {
       this.loader.startBackground();
 
@@ -86,6 +86,11 @@ export class UserListComponent implements OnInit {
       this.users[this.users.findIndex(user => user.id == selectedUser.id)] = JSON.parse(JSON.stringify(this.selectedUser));
 
       selectedUser.birthday = stringBirthday;
+
+      if (this.isNewUser) {
+        this.getUsers();
+      }
+
       toastSuccess.fire("Dados atualizados com sucesso!");
 
     } catch(e) {
@@ -99,6 +104,7 @@ export class UserListComponent implements OnInit {
 
   newUser() {
     this.title = "Novo usuário";
+    this.isNewUser = true;
     this.selectedUser = {fullname: '', age: '', sex: '', birthday: '', email: '', password: ''};
   }
 }
